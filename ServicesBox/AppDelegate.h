@@ -7,9 +7,21 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
+
+#import "AFNetworking/AFHTTPClient.h"
+#import "AFNetworking/AFJSONRequestOperation.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (strong, nonatomic) IBOutlet WebView *webView;
+@property (strong, nonatomic) IBOutlet NSMenu *statusMenu;
+@property (strong, nonatomic) NSStatusItem *statusBar;
+@property (strong, nonatomic) NSTask *backendTask;
+
+- (IBAction)openDashboard:(id)sender;
+- (IBAction)startAllServices:(id)sender;
+- (IBAction)stopAllServices:(id)sender;
 
 @end
