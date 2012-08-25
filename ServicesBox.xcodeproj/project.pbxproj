@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC409A2615E8A02800949694 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC409A2415E8A02800949694 /* PreferencesController.m */; };
+		FC409A2715E8A02800949694 /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC409A2515E8A02800949694 /* PreferencesController.xib */; };
+		FC409A2A15E8BAEF00949694 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC409A2915E8BAEF00949694 /* LaunchAtLoginController.m */; };
+		FC409A2B15E8BC9500949694 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC409A2915E8BAEF00949694 /* LaunchAtLoginController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCA719F315D3FD1B0065132B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA719F215D3FD1B0065132B /* Cocoa.framework */; };
 		FCA719FD15D3FD1B0065132B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCA719FB15D3FD1B0065132B /* InfoPlist.strings */; };
 		FCA719FF15D3FD1B0065132B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA719FE15D3FD1B0065132B /* main.m */; };
@@ -41,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC409A2315E8A02800949694 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		FC409A2415E8A02800949694 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		FC409A2515E8A02800949694 /* PreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
+		FC409A2815E8BAEF00949694 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		FC409A2915E8BAEF00949694 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 		FC62EC9F15DA894900378FF4 /* ServicesBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ServicesBox.entitlements; sourceTree = "<group>"; };
 		FCA719EE15D3FD1B0065132B /* ServicesBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServicesBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA719F215D3FD1B0065132B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -154,6 +163,11 @@
 				FCA71A0415D3FD1B0065132B /* AppDelegate.h */,
 				FCA71A0515D3FD1B0065132B /* AppDelegate.m */,
 				FCA71A0715D3FD1B0065132B /* MainMenu.xib */,
+				FC409A2315E8A02800949694 /* PreferencesController.h */,
+				FC409A2415E8A02800949694 /* PreferencesController.m */,
+				FC409A2515E8A02800949694 /* PreferencesController.xib */,
+				FC409A2815E8BAEF00949694 /* LaunchAtLoginController.h */,
+				FC409A2915E8BAEF00949694 /* LaunchAtLoginController.m */,
 				FCA71A2815D4018C0065132B /* AFNetworking */,
 				FCA719F915D3FD1B0065132B /* Supporting Files */,
 			);
@@ -293,6 +307,7 @@
 				FCA719FD15D3FD1B0065132B /* InfoPlist.strings in Resources */,
 				FCA71A0315D3FD1B0065132B /* Credits.rtf in Resources */,
 				FCA71A0915D3FD1B0065132B /* MainMenu.xib in Resources */,
+				FC409A2715E8A02800949694 /* PreferencesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC409A2B15E8BC9500949694 /* LaunchAtLoginController.m in Sources */,
 				FCA719FF15D3FD1B0065132B /* main.m in Sources */,
 				FCA71A0615D3FD1B0065132B /* AppDelegate.m in Sources */,
 				FCA71A3E15D4018C0065132B /* AFHTTPClient.m in Sources */,
@@ -339,6 +355,7 @@
 				FCA71A4515D4018C0065132B /* AFURLConnectionOperation.m in Sources */,
 				FCA71A4615D4018C0065132B /* AFXMLRequestOperation.m in Sources */,
 				FCA71A4715D4018C0065132B /* UIImageView+AFNetworking.m in Sources */,
+				FC409A2615E8A02800949694 /* PreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA71A1D15D3FD1B0065132B /* ServicesBoxTests.m in Sources */,
+				FC409A2A15E8BAEF00949694 /* LaunchAtLoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

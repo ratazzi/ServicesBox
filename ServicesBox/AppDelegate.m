@@ -9,6 +9,7 @@
 // http://stackoverflow.com/questions/608963/register-as-login-item-with-cocoa
 
 #import "AppDelegate.h"
+#import "PreferencesController.h"
 #include <signal.h>
 
 @implementation AppDelegate
@@ -18,10 +19,22 @@
 @synthesize statusMenu = _statusMenu;
 @synthesize statusBar = _statusBar;
 @synthesize backendTask = _backendTask;
+@synthesize preferencesController = _preferencesController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    
+    if (!self.preferencesController) {
+        self.preferencesController = [[PreferencesController alloc] init];
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"Documents location: %@", documentsDirectory);
+    [defaults setObject:[NSString stringWithFormat:@"%@/%@", documentsDirectory, @"ServicesBox"] forKey:@"dir_library"];
+    NSLog(@"library location: %@", [defaults objectForKey:@"dir_library"]);
 
     self.backendTask = [[NSTask alloc] init];
     NSString *cmd = [NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/dashboard"];
@@ -44,10 +57,6 @@
 //    [self.backendTask setStandardError: errorHandle];
     
     [self.backendTask launch];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:@"/Users/ratazzi/Dropbox/workspace/ServicesBox" forKey:@"dir_library"];
-    NSLog(@"%@", [defaults objectForKey:@"dir_library"]);
 }
 
 - (void)awakeFromNib {
@@ -123,12 +132,19 @@
     [operation start];
 }
 
+- (IBAction)showPreferencesPanel:(id)sender {
+    [self.preferencesController showWindow:self];
+    self.preferencesController.window.isVisible = YES;
+    [self.preferencesController.window display];
+    [NSApp activateIgnoringOtherApps: YES];
+}
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     [self.backendTask terminate];
-    if ([self.backendTask isRunning] == YES) {
-        NSLog(@"send kill -9");
-        kill(self.backendTask.processIdentifier, SIGKILL);
-    }
+//    if ([self.backendTask isRunning] == YES) {
+//        NSLog(@"send kill -9");
+//        kill(self.backendTask.processIdentifier, SIGKILL);
+//    }
     [self.backendTask waitUntilExit];
     int status = [self.backendTask terminationStatus];
     NSLog(@"%d", status);

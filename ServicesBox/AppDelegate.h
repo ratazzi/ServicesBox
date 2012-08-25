@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
+@class PreferencesController;
 #import "AFNetworking/AFHTTPClient.h"
 #import "AFNetworking/AFJSONRequestOperation.h"
 
@@ -19,9 +20,11 @@
 @property (strong, nonatomic) IBOutlet NSMenu *statusMenu;
 @property (strong, nonatomic) NSStatusItem *statusBar;
 @property (strong, nonatomic) NSTask *backendTask;
+@property (strong, nonatomic) PreferencesController *preferencesController;
 
 - (IBAction)openDashboard:(id)sender;
 - (IBAction)startAllServices:(id)sender;
 - (IBAction)stopAllServices:(id)sender;
+- (IBAction)showPreferencesPanel:(id)sender;
 
 @end
