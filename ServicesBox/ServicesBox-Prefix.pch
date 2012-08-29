@@ -5,3 +5,5 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 #endif
+
+#define _AFNETWORKING_PREFER_NSJSONSERIALIZATION_

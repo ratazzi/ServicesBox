@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) LaunchAtLoginController *launchController;
 
+@property (strong) IBOutlet NSButton *startAtLogin;
+
 - (IBAction)selectLibraryLocation:(id)sender;
 - (IBAction)toggleStartAtLogin:(id)sender;
 @end

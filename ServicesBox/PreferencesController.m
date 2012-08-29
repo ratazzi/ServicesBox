@@ -16,9 +16,14 @@
 @implementation PreferencesController
 
 @synthesize launchController = _launchController;
+@synthesize startAtLogin = _startAtLogin;
 
 - (id)init
 {
+    if (!self.launchController) {
+        self.launchController = [[LaunchAtLoginController alloc] init];
+    }
+    
     if (![super initWithWindowNibName:@"PreferencesController"]) {
         return nil;
     }
@@ -38,6 +43,12 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    
+    if ([self.launchController launchAtLogin] == YES) {
+        [self.startAtLogin setState: NSOnState];
+    } else {
+        [self.startAtLogin setState: NSOffState];
+    }
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
@@ -59,11 +70,8 @@
 }
 
 - (IBAction)toggleStartAtLogin:(id)sender {
-    if (!self.launchController) {
-        self.launchController = [[LaunchAtLoginController alloc] init];
-    }
-    BOOL launch = [self.launchController launchAtLogin];
     [self.launchController setLaunchAtLogin:[sender state]];
+    BOOL launch = [self.launchController launchAtLogin];
     NSLog(@"launch at login: %d", launch);
 }
 @end
