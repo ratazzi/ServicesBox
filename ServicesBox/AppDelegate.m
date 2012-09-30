@@ -35,13 +35,23 @@
     NSLog(@"Documents location: %@", documentsDirectory);
     [defaults setObject:[NSString stringWithFormat:@"%@/%@", documentsDirectory, @"ServicesBox"] forKey:@"dir_library"];
     NSLog(@"library location: %@", [defaults objectForKey:@"dir_library"]);
-
+    
+    // first time init
+    if (![defaults objectForKey:@"already_init"]) {
+        NSTask *initTask = [[NSTask alloc] init];
+        NSArray *args = [NSArray arrayWithObjects: @"repair", nil];
+        [initTask setLaunchPath: [NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/ctl"]];
+        [initTask setArguments: args];
+        [initTask launch];
+        [initTask waitUntilExit];
+        NSLog(@"init done.");
+        [defaults setBool:YES forKey:@"already_init"];
+    }
+    
     self.backendTask = [[NSTask alloc] init];
     NSString *cmd = [NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/dashboard"];
     NSLog(@"cmd: %@", cmd);
     [self.backendTask setLaunchPath: cmd];
-//    NSArray *args = [NSArray arrayWithObjects: @"/Users/ratazzi/Dropbox/workspace/ServicesBox/dashboard/app.py", nil];
-//    [self.backendTask setArguments: nil];
     
 //    NSPipe *readPipe = [NSPipe pipe];
 //    NSFileHandle *readHandle = [readPipe fileHandleForReading];
@@ -78,6 +88,9 @@
         NSURLRequest *request = [NSURLRequest requestWithURL: url];
         NSLog(@"loading %@ ...", url);
         [[self.webView mainFrame] loadRequest: request];
+    } else {
+        [[self.webView mainFrame] reload];
+        NSLog(@"reload");
     }
     
     self.window.isVisible = YES;
